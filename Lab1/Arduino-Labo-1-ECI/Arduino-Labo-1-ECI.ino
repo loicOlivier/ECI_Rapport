@@ -15,10 +15,10 @@ void loop() {
   delay(100); //Délai ajouté pour échantillonner à une fréquence de 10 Hz
 
   //3)
-  digitalWrite(3, HIGH); //Mise à un haut logique (5V) de la pin 3
-  delay(0.5); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
-  digitalWrite(3, LOW); //Mise à un bas logique (0V) de la pin 3
-  delay(0.5); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
+  //digitalWrite(3, HIGH); //Mise à un haut logique (5V) de la pin 3
+  //delay(0.5); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
+  //digitalWrite(3, LOW); //Mise à un bas logique (0V) de la pin 3
+  //delay(0.5); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
 
   //6)
   }
