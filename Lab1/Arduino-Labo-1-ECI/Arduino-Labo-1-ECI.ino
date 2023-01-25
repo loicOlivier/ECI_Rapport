@@ -1,8 +1,16 @@
+
+
+
 // Modes d'utilisations
 // Définir le mode désiré uniquement et commenter l'autre
 
 #define SCOPE
 //#define SQUARE_WAVE
+
+// Mode additionnel pour faire l'acquisition sur Matlab
+//#define MATLAB_ACQUISITION
+
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -18,7 +26,7 @@ void loop() {
   //2)
   #ifdef SCOPE
   int data = analogRead(A0); //Lecture analogique et conversion numérique de la tension lue sur A0
-  Serial.println(data); //Affichage de data dans le moniteur de communication série
+  Serial.println(data, BIN); //Affichage de data dans le moniteur de communication série
   delay(100); //Délai de 100ms ajouté pour échantillonner à une fréquence de 10 Hz
   #endif
   
@@ -46,4 +54,25 @@ void loop() {
    *  entre afin d'obtenir presque 1 kz
    */
   //6)
+
+  #ifdef MATLAB_ACQUISITION
+  
+  
+  /*
+  String Bin_data = bitSet< 10 >( data ).to_string(); // data en string binaire 10 bits
+  String LSB_data[8];
+  String MSB_data[8];
+  for (int i = 2; i < 10; i++){
+    LSB_data[i-2] = Bin_data[i]; 
+  }
+  for (int i = 0; i < 8; i++){
+    MSB_data[i] = Bin_data[i]; 
+  }
+  
+  Serial.write(0x01);       // Comment faire pour que la valeur soit reconnue comme du hexa?
+  Serial.write(LSB_data);
+  Serial.write(MSB_data);
+  Serial.write(0xFE); 
+  */             
+  #endif
   }
