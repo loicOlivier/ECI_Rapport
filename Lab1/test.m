@@ -1,7 +1,7 @@
-serialportlist("available") % Trouver le port connecter au arduino
-arduinoObj = serialport("COM7",9600) % Utiliser le port trouvé
+serialportlist("available") % Trouver le port connecté au arduino
+arduinoObj = serialport("COM7",9600) % Utiliser le port trouvé + Bon Baudrate
 configureTerminator(arduinoObj,"CR/LF");
-flush(arduinoObj);
+flush(arduinoObj);             % Nettoyer le contenu de l'objet
 arduinoObj.UserData = struct("Data",[],"Count",1)
 
 configureCallback(arduinoObj,"terminator",@readSineWaveData);

@@ -56,6 +56,16 @@ void loop() {
   //6)
 
   #ifdef MATLAB_ACQUISITION
+
+  int mask1 = 0b0011111111;
+  int mask2 = 0b1111111100;
+  LSB = (data & mask1);
+  MSB = (data & mask2) >> 2;
+
+  Serial.write(0x01);       
+  Serial.write(LSB);
+  Serial.write(MSB);
+  Serial.write(0xFE);
   
   
   /*
