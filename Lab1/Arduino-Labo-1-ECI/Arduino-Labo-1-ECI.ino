@@ -4,12 +4,13 @@
 // Modes d'utilisations
 // Définir le mode désiré uniquement et commenter l'autre
 
-#define SCOPE
-//#define SQUARE_WAVE
+//#define SCOPE
+#define SQUARE_WAVE
 
 // Mode additionnel pour faire l'acquisition sur Matlab
 //#define MATLAB_ACQUISITION
-
+int x = 0;
+int y = 0;
 
 
 void setup() {
@@ -18,7 +19,7 @@ void setup() {
   Serial.begin(115200); //Configuration de la communication sérielle à une fréquence de 115200 bits/seconde
   pinMode(A0, INPUT); //Configuration de la pin A0 comme entrée
   //3)
-  pinMode(3, OUTPUT); //Configuration de la pin 3 comme sortie
+  pinMode(3, OUTPUT);//Configuration de la pin 3 comme sortie
 }
 
 void loop() {
@@ -26,7 +27,7 @@ void loop() {
   //2)
   #ifdef SCOPE
   int data = analogRead(A0); //Lecture analogique et conversion numérique de la tension lue sur A0
-  Serial.println(data, BIN); //Affichage de data dans le moniteur de communication série
+  Serial.println(data); //Affichage de data dans le moniteur de communication série
   delay(100); //Délai de 100ms ajouté pour échantillonner à une fréquence de 10 Hz
   #endif
   
@@ -36,16 +37,26 @@ void loop() {
   // Acquisition (scope)
   int data = analogRead(A0); //Lecture analogique et conversion numérique de la tension lue sur A0
   Serial.println(data); //Affichage de data dans le moniteur de communication série
-
+  if (x % 3 == 0) {
+    x = 0;
+    if (y) {
+      digitalWrite(3, HIGH);
+      y = -y + 1;
+  } else {
+      digitalWrite(3, LOW);
+      y = -y + 1;}
+  }
+    x = x + 1;
   // Génération d'une onde carré à 1kz
   /* Remarque: La fréquence réelle mesurée sera inférieure à 1kz en raison 
    * des autres fonctions (digitalWrite, Serial.print, etc.) qui prennet
    * une courte durée à être effectué.
   */ 
-  digitalWrite(3, HIGH); //Mise à un haut logique (5V) de la pin 3
-  delay(0.5); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
-  digitalWrite(3, LOW); //Mise à un bas logique (0V) de la pin 3
-  delay(0.5); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
+  //digitalWrite(3, HIGH); //Mise à un haut logique (5V) de la pin 3
+  //delay(3); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
+  //digitalWrite(3, LOW); //Mise à un bas logique (0V) de la pin 3
+  //delay(3); //Délai ajouté pour imposer une fréquence de 1kHz à la boucle
+  delay(1);
   #endif
 
   /* 
