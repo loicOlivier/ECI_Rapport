@@ -32,6 +32,24 @@ void loop() {
   
   //3)
   #ifdef SQUARE_WAVE
+  freq = 1000
+  int i = 0;
+  bool status_pin;
+  digitalWrite(4,HIGH);
+  digitalWrite(3,HIGH);
+  while (1){
+    if (i % 3){
+      if status_pin
+      digitalWrite(3, LOW);
+      status_pin = ~status_pin
+      i = 0;
+    }
+    digitalWrite(4, HIGH);
+    delayMicroseconds(freq / (1000 * 2));
+    digitalWrite(4,LOW);
+    delayMicroseconds(freq / (1000 * 2));
+    i++
+  }
 
   // Acquisition (scope)
   int data = analogRead(A0); //Lecture analogique et conversion numérique de la tension lue sur A0
