@@ -54,14 +54,16 @@ void loop() {
   int data = analogRead(A0);
   
   int mask1 = 0b0011111111;
-  int mask2 = 0b1111111100;
-  LSB = (data & mask1);
-  MSB = (data & mask2) >> 2;
+  int mask2 = 0b1100000000;
+  byte LSB = (data & mask1);
+  byte MSB = (data & mask2) >> 8;
+  byte intro = 0x01;
+  byte outro = 0xFE;
 
-  Serial.write(0x01);       
+  Serial.write(intro);       
   Serial.write(LSB);
   Serial.write(MSB);
-  Serial.write(0xFE);
+  Serial.write(outro);
                
   #endif
   }

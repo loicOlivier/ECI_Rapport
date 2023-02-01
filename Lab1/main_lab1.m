@@ -1,6 +1,6 @@
 %% Nettoye le port et reset les variables Matlab 
 instr = instrfind;
-if isempty(instr) == 0;
+if isempty(instr) == 0
     fclose(instr);
     delete(instr);
     clear instr;
@@ -53,7 +53,7 @@ while(1)
     %Appelle la fonction get_data
     data_out = get_data_lab1(s);
     % Converti les valeurs d'une plage de 0-1023 à 0-5V
-    volt = data_out*(5/1023);
+    volt = data_out*(5/(1023));
 
     %Affichage des données
     inc = inc(end)+(1:length(volt));
