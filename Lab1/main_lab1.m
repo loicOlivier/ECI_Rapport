@@ -12,7 +12,7 @@ clc
 
 %% Établie connection série 
 
-com_port = 'COM7'; % CHANGER LE PORT COM!
+com_port = 'COM6'; % CHANGER LE PORT COM!
 baud_rate = 115200;
 databits = 8;
 input_buffer = 8192;
