@@ -2,7 +2,7 @@
 // --------------------------------------------------------------------------------
 
 //#define SCOPE //Définition de la macro pour la question 2
-//#define SQUARE_WAVE //Définition de la macro pour la question 3
+#define SQUARE_WAVE //Définition de la macro pour la question 3
 //#define MATLAB_ACQUISITION //Définition de la macro pour la question 6
 
 // --------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ void setup() {
   Serial.begin(115200); //Configuration de la communication sérielle à une fréquence de 115200 bits/seconde
   pinMode(A0, INPUT); //Configuration de la pin A0 comme entrée
   //3)
-  pinMode(3, OUTPUT);//Configuration de la pin 3 comme sortie
+  pinMode(10, OUTPUT);//Configuration de la pin 3 comme sortie
 }
 
 void loop() {
@@ -37,14 +37,14 @@ void loop() {
   if (x % 3 == 0) { //Condition pour générer l'onde carrée
     x = 0;
     if (y) {
-      digitalWrite(3, HIGH);
+      digitalWrite(10, HIGH);
       y = -y + 1;
   } else {
-      digitalWrite(3, LOW);
+      digitalWrite(10, LOW);
       y = -y + 1;}
   }
     x = x + 1;
-    delay(1); //Délai de 1 ms ajouté pour échantilloner à une fréquence d'environ 136 Hz
+    delay(1.36); //Délai de 1.36 ms ajouté pour échantilloner à une fréquence d'environ 100 Hz
   #endif
 
   //6)
